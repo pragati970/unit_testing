@@ -4,7 +4,7 @@ pipeline {
     tools{
         maven 'local_maven'
     }
-    
+
     stages {
         stage('Checkout') {
             steps {
@@ -12,20 +12,17 @@ pipeline {
                 checkout scm
             }
         }
-        
-        stage('Integration Testing') {
+
+        stage('Build and Test') {
             steps {
-                // Set up the environment (if needed)
-              //  sh 'm install' // Example: Installing dependencies
-                
-                // Run integration tests
-                sh 'UnitTest.java' // Replace with the actual command to run your integration tests
-                
-                // Archive test results for later viewing in Jenkins
-                junit '**/test-reports/*.xml' // Example: JUnit test report
+                // Build the Spring Boot application
+                sh './mvnw clean package' // Use './mvnw' for Unix-like systems, or 'mvnw.cmd' for Windows
+
+                // Run integration tests with TestNG
+                sh './mvnw test' // This assumes that TestNG tests are configured in your project's pom.xml
             }
         }
-        
-        // Add more stages for other pipeline steps (e.g., build, deploy, etc.)
+
+        // Add more stages for other pipeline steps (e.g., deploy, etc.)
     }
 }
