@@ -25,7 +25,7 @@ pipeline {
          stage('TestNG result') {
             steps {
                 // Checkout your source code from version control
-                 testNG reportFilenamePattern: 'TestNG.xml'
+                 testNG reportFilenamePattern: 'testng-results.xml'
             }
         }
 
