@@ -22,6 +22,12 @@ pipeline {
                 sh './mvnw test' // This assumes that TestNG tests are configured in your project's pom.xml
             }
         }
+         stage('TestNG result') {
+            steps {
+                // Checkout your source code from version control
+                 testNG reportFilenamePattern: 'TestNG.xml'
+            }
+        }
 
         // Add more stages for other pipeline steps (e.g., deploy, etc.)
     }
