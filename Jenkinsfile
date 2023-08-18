@@ -20,9 +20,5 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            testNG(testresults: '**/testng-results.xml')   
-        }
-    }
+    
 }
