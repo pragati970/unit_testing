@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+             git branch: 'main', url: 'https://github.com/pragati970/unit_testing.git'
             }
         }
         stage('Build and Test') {
