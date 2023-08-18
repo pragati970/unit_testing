@@ -22,7 +22,7 @@ pipeline {
 
     post {
         always {
-            'testNG reportFilenamePattern: './testng-results.xml''    
+            testNG(testoutput: '**/testng-results.xml')   
         }
     }
 }
